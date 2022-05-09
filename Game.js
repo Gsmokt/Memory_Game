@@ -8,9 +8,9 @@ export class Game {
     this.results;
   }
   getRandomPlayers() {
-    for (let i = 0; i < this.numbersOfPlayers; i++) {
-      this.players.push(new Players(i + 1));
-    }
+    this.players = this.board
+      .slice(0, this.numbersOfPlayers)
+      .flatMap((_, i) => new Players(i + 1));
   }
   startGame() {
     if (this.players.length === 0) this.getRandomPlayers();
