@@ -1,0 +1,12 @@
+{
+  "type": "module",
+  "name": "memory_game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Board.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
