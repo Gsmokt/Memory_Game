@@ -18,7 +18,7 @@ export class Game {
     this.board = random !== false ? random : this.board;
     this.results = {
       ...this.results,
-      [`Player ${this.players[x].name} number_of_Hits`]:
+      [`Player ${this.players[x].name} - number_of_Hits`]:
         this.players[x].pairs.length,
     };
     return this.checkIfGuess(++x);
