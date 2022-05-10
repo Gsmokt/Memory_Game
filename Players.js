@@ -5,9 +5,9 @@ export class Players extends Player {
     super(...props);
   }
   memorizedCards(board) {
-    const X = Math.floor(Math.random() * board.length);
-    if (this.memorizedPairs(board, X)) {
-      const newBoard = board.filter((e) => e !== board[X]);
+    const x = Math.floor(Math.random() * board.length);
+    if (this.memorizedPairs(board, x)) {
+      const newBoard = board.filter((e) => e !== board[x]);
       return newBoard;
     } else return false;
   }
