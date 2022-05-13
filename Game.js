@@ -14,8 +14,7 @@ export class Game {
   }
   checkIfGuess(x) {
     if (x > this.players.length - 1 || this.board.length === 0) return;
-    const newBoard = this.players[x].memorizedCards(this.board);
-    this.board = newBoard ?? this.board;
+    this.board = this.players[x].memorizedCards(this.board) ?? this.board;
     this.results = {
       ...this.results,
       [`Player ${this.players[x].name} - number_of_Hits`]:
@@ -26,17 +25,11 @@ export class Game {
 
   startGame() {
     !this.players && this.getRandomPlayers();
-    if (this.board.length === 0) {
-      throw this.results;
-    }
+    if (this.board.length === 0) throw this.results;
     this.checkIfGuess(0);
     return this.startGame();
   }
 }
-
-
-
-
 
 
 
