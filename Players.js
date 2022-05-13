@@ -6,10 +6,7 @@ export class Players extends Player {
   }
   memorizedCards(board) {
     const x = Math.floor(Math.random() * board.length);
-    if (this.memorizedPairs(board, x)) {
-      const newBoard = board.filter((e) => e !== board[x]);
-      return newBoard;
-    } else return;
+    return this.memorizedPairs(board, x) ? board.filter((e) => e !== board[x]) : null;
   }
   memorizedPairs(board, x) {
     if (this.cards.includes(board[x])) {
