@@ -7,19 +7,13 @@ export class Game {
     this.players;
     this.results = {};
   }
-
-  checkCell() {
-    return this.board.every((e) => e === "hit") ?? false;
-  }
-
   getRandomPlayers() {
     this.players = this.board
       .slice(0, this.numbersOfPlayers)
       .flatMap((_, i) => new Players(i + 1));
   }
-
   checkIfGuess(x) {
-    if (x > this.players.length - 1 || this.checkCell()) return;
+    if (x > this.players.length - 1 || this.board.length === 0) return;
     this.board = this.players[x].memorizedCards(this.board) ?? this.board;
     this.results = {
       ...this.results,
@@ -31,10 +25,16 @@ export class Game {
 
   startGame() {
     !this.players && this.getRandomPlayers();
-    if (this.checkCell()) throw this.results;
+    if (this.board.length === 0) throw this.results;
     this.checkIfGuess(0);
     return this.startGame();
   }
 }
 
 
+// this.results = this.players.map((player) => {
+//   const random = player.memorizedCards(this.board);
+//   this.board = random !== false ? random : this.board;
+//   return { Player: player.name, Number_of_Hits: player.pairs.length };
+// });
+// .slice(this.results.length - this.players.length, this.results.length);
