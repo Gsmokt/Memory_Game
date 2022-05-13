@@ -9,7 +9,7 @@ export class Players extends Player {
     if (this.memorizedPairs(board, x)) {
       const newBoard = board.filter((e) => e !== board[x]);
       return newBoard;
-    } else return false;
+    } else return;
   }
   memorizedPairs(board, x) {
     if (this.cards.includes(board[x])) {
