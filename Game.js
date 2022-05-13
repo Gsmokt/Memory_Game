@@ -9,7 +9,7 @@ export class Game {
   }
 
   checkCell() {
-    return this.board.every((e) => e === "hit") ?? false;
+    return this.board.every((e) => e === "hit");
   }
 
   getRandomPlayers() {
@@ -19,7 +19,8 @@ export class Game {
   }
 
   checkIfGuess(x) {
-    if (x > this.players.length - 1 || this.checkCell()) return;
+    if(this.checkCell()) return true;
+    if (x > this.players.length - 1) return;
     this.board = this.players[x].memorizedCards(this.board) ?? this.board;
     this.results = {
       ...this.results,
@@ -31,8 +32,7 @@ export class Game {
 
   startGame() {
     !this.players && this.getRandomPlayers();
-    if (this.checkCell()) throw this.results;
-    this.checkIfGuess(0);
+    if (this.checkIfGuess(0)) throw this.results;
     return this.startGame();
   }
 }
